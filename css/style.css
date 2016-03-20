@@ -1,3 +1,24 @@
+html, body {
+    height: 100%;
+}
+
+#content-wrap {
+    min-height: 100%;
+    /* equal to footer height */
+}
+
+#content-wrap:after {
+  content: "";
+  display: block; 
+}
+
+footer {
+    padding: 10px 0;
+    background: #1D1840;
+    text-align: center;
+    color: #F2D3AC;
+}
+
 .centered {
     display: block;
     margin-left: auto;

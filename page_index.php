@@ -9,7 +9,7 @@
 <meta name="description" content="A layout example that shows off a responsive pricing table.">
 
     <title>Assignment 02 jQuery – Andrew Burdett</title>
-
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 
 <!--[if lte IE 8]>
@@ -35,7 +35,7 @@
 <body>
 <div id="content-wrap">    
     <div class="banner">
-        <h1 class="banner-head">
+        <h1 class="siteName banner-head">
             IdeaWeather
         </h1>
     </div>
@@ -43,7 +43,7 @@
     <div class="container centered">    
         <div class="pure-g">
             <div class="pure-u-1-3">
-                <img class="pure_img centered" src="img/zip.png" alt="Find weather by zip">
+                <img class="pure-img centered" src="img/zip.png" alt="Find weather by zip">
                 <div class="centered">
                     <span>Zip</span>
                     <input type="text" id="zipCode"/>
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="pure-u-1-3">
-                <img class="pure_img centered" src="img/geolocation.png" alt="Find location by geolocation">
+                <img class="pure-img centered" src="img/geolocation.png" alt="Find location by geolocation">
                 <div class="centered">
                     <span class="geolocation">Geolocation</span>
                     <br>
@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="pure-u-1-3">
-                <img class="pure_img centered" src="img/list.png" alt="Find weather by list">
+                <img class="pure-img centered" src="img/list.png" alt="Find weather by list">
                 <div class="centered">
                     <span>Listed Cities</span>
                     <select id="citySelect">
@@ -75,7 +75,8 @@
                 </div>
             </div>
         </div>
-    </div>    
+    <div id="weatherData" class="centered pure-g"></div>
+    </div>
 </div>
 <footer>
     <p>
@@ -84,7 +85,10 @@
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script src="js/weather.js"></script>
+<!--<script src="js/banner.js"></script>-->
     
 </body>
 </html>

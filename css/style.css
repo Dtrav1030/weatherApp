@@ -4,13 +4,14 @@ html, body {
 
 #content-wrap {
     min-height: 100%;
-    /* equal to footer height */
 }
 
+/*
 #content-wrap:after {
   content: "";
   display: block; 
 }
+*/
 
 footer {
     padding: 10px 0;
@@ -52,22 +53,34 @@ footer {
 	border-color: #011535;
 }
 
-.success {
+.success, .error {
     text-align: center;
+    margin-top: 20%;
     width: 100%;
-    background: green;
     color: white;
-    padding: 25px 0;
+    padding: 15px 0;
     position: absolute;
 }
 
+.success {
+    background: green;
+}
+
 .error {
-    text-align: center;
-    width: 100%;
     background: red;
-    color: white;
-    padding: 25px 0;
-    position: absolute;
+}
+
+#conditionImg {
+    max-width: 300px;
+    padding: 0 160px;
+}
+
+#weatherTable {
+    text-align: left;
+}
+
+#weatherData-inner {
+    margin-top: 50px;
 }
 
 /*clearfix*/

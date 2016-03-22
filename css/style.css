@@ -70,17 +70,55 @@ footer {
     background: red;
 }
 
-#conditionImg {
-    max-width: 300px;
-    padding: 0 160px;
-}
-
-#weatherTable {
-    text-align: left;
+table {
+    line-height: 2em;
 }
 
 #weatherData-inner {
     margin-top: 50px;
+}
+
+#conditionImg {
+    width: 26%;
+    margin-right: 5%;
+}
+
+/*Activity Styles*/
+#sliderWrapper {
+    width: 240%;
+    transform: translate3d(0, 0, 0);
+}
+
+.content {
+    float: left;
+    height:350px;
+    width: 80%; 
+    white-space: normal;
+    background-repeat: no-repeat;
+    margin-left: 5%;
+}
+
+#activityOne {
+    background-color: #ADFF2F;
+}
+
+#activityTwo {
+    background-color: #FF7F50;
+}
+
+#activityThree {
+    background-color: #1E90FF;
+}
+
+#sliderContainer {
+    height: 350px;
+    overflow: hidden;
+}
+
+.activityImg {
+    width: 40%;
+    height: auto;
+    margin: 1% 2.5%;
 }
 
 /*clearfix*/

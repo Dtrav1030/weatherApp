@@ -138,26 +138,26 @@ $( document ).ready(function() {
             $('<h2>'+data.name+'</h2>').appendTo( '#weatherData' );
             //add inner data container
             $('<div id="weatherData-inner" class="centered"></div>').appendTo('#weatherData');
-            //add condition
-            $('<table id="weatherTable" class="pure-u-1-2"><tr id="condition"><td>Condition:</td></tr></table>').appendTo( '#weatherData-inner' );
+            //make table and add header condition
+            $('<table id="weatherTable" class="pure-u-1-3 pure-table pure-table-bordered"><tr class="pure-table-odd" id="condition"><td>Condition:</td></tr></table>').appendTo( '#weatherData-inner' );
             $('<td>'+ data.weather.main +'</td>').appendTo('#condition');
             //add description
             $('<tr id="description"><td>Description:</td></tr>').appendTo( '#weatherTable' );
             $('<td>'+ data.weather.description +'</td>').appendTo('#description');
             //add lat and lon
-            $('<tr id="latLon"><td>Lat: '+data.coord.lat+'</td></tr>').appendTo( '#weatherTable' );
+            $('<tr id="latLon" class="pure-table-odd"><td>Lat: '+data.coord.lat+'</td></tr>').appendTo( '#weatherTable' );
             $('<td>Lon: '+ data.coord.lon +'</td>').appendTo('#latLon');
             //add temp
             $('<tr id="temp"><td>Temperature:</td></tr>').appendTo( '#weatherTable' );
             $('<td>'+ data.main.temp +'</td>').appendTo('#temp');
             //add low and high
-            $('<tr id="loHi"><td>Low: '+data.main.temp_min+'</td></tr>').appendTo( '#weatherTable' );
+            $('<tr id="loHi" class="pure-table-odd"><td>Low: '+data.main.temp_min+'</td></tr>').appendTo( '#weatherTable' );
             $('<td>High: '+ data.main.temp_max +'</td>').appendTo('#loHi');
             //add humidity
             $('<tr id="humidity"><td>Humidity:</td></tr>').appendTo( '#weatherTable' );
             $('<td>'+ data.main.humidity +'%</td>').appendTo('#humidity');
             //wind speed
-            $('<tr id="wind"><td>Wind Speed:</td></tr>').appendTo( '#weatherTable' );
+            $('<tr id="wind" class="pure-table-odd"><td>Wind Speed:</td></tr>').appendTo( '#weatherTable' );
             $('<td>'+ data.wind.speed +' mph</td>').appendTo('#wind');
             
             //assign id to weather condition to be used in assigncondition()
@@ -218,9 +218,90 @@ $( document ).ready(function() {
         $("#conditionImg").attr("src", "img/conditionImg/"+weatherCondition+".png");
         $("#conditionImg").attr("alt", "Image representing "+weatherCondition+" weather.");
         $('#conditionImg').addClass('pure-img');
-        $('#conditionImg').addClass('pure-u-1-2');
+        $('#conditionImg').addClass('pure-u-1-3');
         
         success();
     }
+    
+    //assign activities for current conndition
+    function assignActivities(weatherCondition) {
+        var activity1;
+        var activity2;
+        var activity3;
 
+        switch(weatherCondition) {
+            case "thunderstorm": case "extreme":
+                activity1 = "boardGames";
+                activity2 = "read";
+                activity3 = "cleanHouse";
+                break;
+            case "drizzle":
+                activity1 = "goShopping";
+                activity2 = "cook";
+                activity3 = "read";
+                break;	
+            case "rain":
+                activity1 = "write";
+                activity2 = "cleanHouse";
+                activity3 = "videoGames";
+                break;	
+            case "snow":
+                activity1 = "hotChocolate";
+                activity2 = "ski";
+                activity3 = "buildSnowman";
+                break;	
+            case "lowvisibility":
+                activity1 = "cleanHouse";
+                activity2 = "read";
+                activity3 = "cook";
+                break;				
+            case "clouds":
+                activity1 = "read";
+                activity2 = "boardGames";
+                activity3 = "cook";
+                break;		
+            case "clear":
+                activity1 = "goOutside";
+                activity2 = "goShopping";
+                activity3 = "flyKite";
+                break;
+            case "windy":
+                activity1 = "goOutside";
+                activity2 = "flyKite";
+                activity3 = "read";
+                break;
+        }
+        addActivities(weatherCondition);
+    }
+    
+    //create activity panels
+    function addActivities(weatherCondition) {
+        //create divs to hold panel content
+        $('<div id="sliderContainer"></div>').appendTo("#weatherData-inner");
+        $('#sliderContainer').addClass("pure-u-1-3");
+        $('<div id="sliderWrapper"></div>').appendTo("#sliderContainer");
+//        $('#sliderWrapper').addClass("pure-u-3-3");
+        //activity one
+            $('<div id="activityOne"></div').appendTo("#sliderWrapper");
+            $('#activityOne').addClass("content");
+            //activity one image
+            $('<img/>').attr("id", "activityOneImg").appendTo("#activityOne");
+            $('#activityOneImg').attr("src", "https://www.fillmurray.com/g/600/300");  
+            $('#activityOneImg').addClass("pure-img");
+            $('#activityOneImg').addClass("activityImg");
+        //activity two
+        $('<div id="activityTwo"></div').appendTo("#sliderWrapper");
+        $('#activityTwo').addClass("content");
+        //activity three
+        $('<div id="activityThree"></div').appendTo("#sliderWrapper");
+        $('#activityThree').addClass("content");
+        
+        addActivityNav();
+    }
+    
+    function addActivityNav() {
+        $('<div id=activityNav></div>').appendTo('#sliderContainer');
+        $('<ul><li class="itemLinks"></li></ul>').appendTo('#activityNav');
+    }
+    
 });

@@ -4,6 +4,7 @@ html, body {
 
 #content-wrap {
     min-height: 100%;
+    margin-bottom: 90px;
 }
 
 /*
@@ -17,7 +18,7 @@ footer {
     padding: 10px 0;
     background: #1D1840;
     text-align: center;
-    color: #F2D3AC;
+    color: white;
 }
 
 .centered {
@@ -37,8 +38,8 @@ footer {
 	cursor: pointer;
 	text-decoration: none;
 	border: solid;
-	border-color: #011535;
-	background-color: #011535;
+	border-color: #1D1840;
+	background-color: #1D1840;
 	color: white;
 	border-radius: 8px;
 	display: block;
@@ -49,8 +50,8 @@ footer {
 
 .button:hover {
 	background-color: white;
-	color: #011535;
-	border-color: #011535;
+	color: #1D1840;
+	border-color: #1D1840;
 }
 
 .success, .error {
@@ -70,56 +71,102 @@ footer {
     background: red;
 }
 
-table {
+.pure-table {
     line-height: 2em;
+    display: inline-table;
+    max-width: 410px;
 }
+
+.pure-table td {
+    width: 200px;
+}
+
 
 #weatherData-inner {
     margin-top: 50px;
 }
 
 #conditionImg {
-    width: 26%;
-    margin-right: 5%;
+    max-height: 350px;
+    width: auto;
+    margin-right: 4%;
 }
 
 /*Activity Styles*/
-#sliderWrapper {
-    width: 240%;
-    transform: translate3d(0, 0, 0);
-}
+    /*slider styling*/
+    #sliderWrapper {
+        width: 90%;
+        transform: translate3d(0, 0, 0);
+        float: right;
+        transition: transform .5s ease-in-out;
+    }
+    
+    #sliderContainer {
+        height: 350px;
+        overflow: hidden;
+        float: right;
+    }
 
-.content {
-    float: left;
-    height:350px;
-    width: 80%; 
-    white-space: normal;
-    background-repeat: no-repeat;
-    margin-left: 5%;
-}
+    .content {
+        float: left;
+        height:350px;
+        width: 100%; 
+        white-space: normal;
+        background-repeat: no-repeat;
+        background: #F2D3AC;
+        border-radius: 15px;
+    }
+    
+    .content p {
+        padding: 0 20px;
+    }
+        /*slider navigation*/
+        #actNav {
+            text-align: center;
+            margin-top: -240px;
+            margin-left: 81%;
+            position: absolute;
+        }
+            #actNav ul {
+                margin: 0px;
+                padding: 0px;
+                display: inline-block;
+                margin-top: 6px;
+            }
+                #actNav ul li {
+/*                    float: left;*/
+                    text-align: center;
+                    margin: 20px 0px;
+                    list-style: none;
+                    cursor: pointer;
+                    background-color: white;
+                    padding: 5px;
+                    border-radius: 50%;
+                    border: #1D1840 5px solid;
+                }
+                    #actNav ul li:hover {
+                        background-color: #1D1840;
+                    }
+                    #actNav ul li.active {
+                        background-color: #1D1840;
+                        color: #FFFFFF;
+                        outline-width: 7px;
+                    }
+                        #actNav ul li.active:hover {
+                            background-color: #484848;
+                            color: #FFFFFF;
+                        }
 
-#activityOne {
-    background-color: #ADFF2F;
-}
+    /*activity images*/
+    .activityImg {
+        width: 95%;
+        height: auto;
+        margin: 2.5% 2.5%;
+        border-radius: 15px;
+    }
 
-#activityTwo {
-    background-color: #FF7F50;
-}
 
-#activityThree {
-    background-color: #1E90FF;
-}
-
-#sliderContainer {
-    height: 350px;
-    overflow: hidden;
-}
-
-.activityImg {
-    width: 40%;
-    height: auto;
-    margin: 1% 2.5%;
-}
+/*end activity styles*/
 
 /*clearfix*/
 .clearfix:after {

@@ -5,7 +5,7 @@
 		$fileContents = file_get_contents($file);
 		//change contents to current data
 		if ($fileContents == "" || time() - (4 * 60 * 60) >= $fileContents){
-            print("been 4 hours");
+//            print("been 4 hours");
             
             if (file_exists($file)) {
                 //open file
@@ -106,7 +106,7 @@
                 file_put_contents($file, $fileContents);
             }
         } else {
-            print("not 4 hours");
+//            print("not 4 hours");
         }
 	}
 

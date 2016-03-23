@@ -220,7 +220,7 @@ $( document ).ready(function() {
         $('#conditionImg').addClass('pure-img');
         $('#conditionImg').addClass('pure-u-1-3');
         
-        success();
+//        success();
     }
     
     //assign activities for current conndition
@@ -271,11 +271,14 @@ $( document ).ready(function() {
                 activity3 = "read";
                 break;
         }
-        addActivities(weatherCondition);
-    }
+        addActivities(activity1, activity2, activity3);
+        addActivityNav();
+    } 
     
     //create activity panels
-    function addActivities(weatherCondition) {
+    function addActivities(act1, act2, act3) {
+        var title;
+        var desc;
         //create divs to hold panel content
         $('<div id="sliderContainer"></div>').appendTo("#weatherData-inner");
         $('#sliderContainer').addClass("pure-u-1-3");
@@ -286,22 +289,190 @@ $( document ).ready(function() {
             $('#activityOne').addClass("content");
             //activity one image
             $('<img/>').attr("id", "activityOneImg").appendTo("#activityOne");
-            $('#activityOneImg').attr("src", "https://www.fillmurray.com/g/600/300");  
+            $('#activityOneImg').attr("src", "img/activityImg/"+act1+".jpg");  
             $('#activityOneImg').addClass("pure-img");
             $('#activityOneImg').addClass("activityImg");
+            //activity one title
+            title = assignTitle(act1);
+            $('<h3>'+title+'</h3>').appendTo("#activityOne");
+            //activity one desc
+            desc = assignDesc(act1);
+            $('<p>'+desc+'</p>').appendTo("#activityOne");     
         //activity two
-        $('<div id="activityTwo"></div').appendTo("#sliderWrapper");
-        $('#activityTwo').addClass("content");
+            $('<div id="activityTwo"></div').appendTo("#sliderWrapper");
+            $('#activityTwo').addClass("content");
+            //activity two image
+            $('<img/>').attr("id", "activityTwoImg").appendTo("#activityTwo");
+            $('#activityTwoImg').attr("src", "img/activityImg/"+act2+".jpg");  
+            $('#activityTwoImg').addClass("pure-img");
+            $('#activityTwoImg').addClass("activityImg");
+            //activity two title
+            title = assignTitle(act2);
+            $('<h3>'+title+'</h3>').appendTo("#activityTwo");
+            //activity two desc
+            desc = assignDesc(act2);
+            $('<p>'+desc+'</p>').appendTo("#activityTwo");    
         //activity three
-        $('<div id="activityThree"></div').appendTo("#sliderWrapper");
-        $('#activityThree').addClass("content");
+            $('<div id="activityThree"></div').appendTo("#sliderWrapper");
+            $('#activityThree').addClass("content");
+            $('<div id="activityThree"></div').appendTo("#sliderWrapper");
+            $('#activityThree').addClass("content");
+            //activity two image
+            $('<img/>').attr("id", "activityThreeImg").appendTo("#activityThree");
+            $('#activityThreeImg').attr("src", "img/activityImg/"+act3+".jpg");  
+            $('#activityThreeImg').addClass("pure-img");
+            $('#activityThreeImg').addClass("activityImg");
+            //activity two title
+            title = assignTitle(act3);
+            $('<h3>'+title+'</h3>').appendTo("#activityThree");
+            //activity two desc
+            desc = assignDesc(act3);
+            $('<p>'+desc+'</p>').appendTo("#activityThree");    
         
-        addActivityNav();
     }
     
     function addActivityNav() {
-        $('<div id=activityNav></div>').appendTo('#sliderContainer');
-        $('<ul><li class="itemLinks"></li></ul>').appendTo('#activityNav');
+        var i=0;
+        $('<div id=actNav></div>').insertAfter('#sliderContainer');
+        $('<ul></ul>').attr("id", "actNavList").appendTo("#actNav");
+        while (i < 3) {
+            $('<li class="actLinks"></li>').attr("id", "actNavButton"+i).appendTo("#actNavList");
+            $('#actNavButton'+i).attr("data-pos", i * -350+"px");
+            $('#actNavButton'+i).click(changePosition);
+            $('#actNavButton'+i).click(changeActive);
+            i++
+        }
+        
+        $('#actNavButton0').addClass("active");
     }
+    
+    function changePosition() {
+        var clicked = $(this).attr('id');
+        var pixelChange = $("#"+clicked).attr('data-pos');
+        $('#sliderWrapper').css({
+            transform: 'translate3d(0, '+pixelChange+', 0)'
+        });
+    }
+    
+    
+    function changeActive() {
+        if ($('.actLinks').hasClass("active")) {
+            $('.actLinks').removeClass("active")
+        }
+        $(this).toggleClass("active");
+    }
+    
+    //assign a title based on activity
+    function assignTitle(activity) {
+        var title;
+        switch(activity) {
+            case "boardGames":
+                title = "Play a Board Game!";
+                return title;
+                break;
+            case "read":
+                title = "Go Read!";
+                return title;
+                break;
+            case "cleanHouse":
+                title = "Clean Your House!";
+                return title;
+                break;
+            case "goShopping":
+                title = "Go Shopping!";
+                return title;
+                break;
+            case "cook":
+                title = "Cook Something!";
+                return title;
+                break;
+            case "write":
+                title = "Write Something!";
+                return title;
+                break;
+            case "videoGames":
+                title = "Play Some Video Games!";
+                return title;
+                break;
+            case "hotChocolate":
+                title = "Drink Some Hot Chocolate!";
+                return title;
+                break;
+            case "ski":
+                title = "Go Skiing!";
+                return title;
+                break;
+            case "buildSnowman":
+                title = "Build a Snowman!";
+                return title;
+                break;
+            case "goOutside":
+                title = "Get Outside!";
+                return title;
+                break;
+            case "flyKite":
+                title = "Go Fly a Kite!";
+                return title;
+                break;										
+        }
+    }
+    
+    //assign a description based on activity
+    function assignDesc(activity) {
+        var desc;
+        switch(activity) {
+            case "boardGames":
+                desc = "Board games are a great way to pass some time with friends! Grab your favorite and get playing.";
+                return desc;
+                break;
+            case "read":
+                desc = "Some say you're defined by the people you associate with and the books you read. Start reading a great book!";
+                return desc;
+                break;
+            case "cleanHouse":
+                desc = "Chances are there is something in your house or apartment that needs to be cleaned. Get to it!";
+                return desc;
+                break;
+            case "goShopping":
+                desc = "It's a perfect day to go shopping and spend some of your hard earned cash. Pick up something for me!";
+                return desc;
+                break;
+            case "cook":
+                desc = "Learn about a new recipe, then mess it up! Add a new meal to your arsenal.";
+                return desc;
+                break;
+            case "write":
+                desc = "Try your hand at some writing then put it online! You never know who will see your work.";
+                return desc;
+                break;
+            case "videoGames":
+                desc = "Video games are a great way to waste a day away. Go rent a new game or dust off an old favorite!";
+                return desc;
+                break;
+            case "hotChocolate":
+                desc = "Baby, it's cold outside! Grab a blanket and fill up with some hot chocolate.";
+                return desc;
+                break;
+            case "ski":
+                desc = "Go tear up that mountain and test that new powder bruh! Avalanche!";
+                return desc;
+                break;
+            case "buildSnowman":
+                desc = "Building a man of snow is an old favorite on a snowey day. Go build one and post it online!";
+                return desc;
+                break;
+            case "goOutside":
+                desc = "Get off your tuckus and go for a hike, bike ride, or whatever. Just go outside and get your blood flowing!";
+                return desc;
+                break;
+            case "flyKite":
+                desc = "It's windy enough to fly a kite outside and excite your inner child. Grab one and get going.";
+                return desc;
+                break;										
+        }
+    }
+    
+    
+    
     
 });

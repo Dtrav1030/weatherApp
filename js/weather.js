@@ -133,10 +133,29 @@ $( document ).ready(function() {
     
     function loadData (jsonUrl) {
         $('#weatherData').empty().fadeOut;
-        $.getJSON( jsonUrl, function( data ) {
-            //add cty name  
-            $('<h2>'+data.name+'</h2>').appendTo( '#weatherData' );
-            //add inner data container
+//            $('#weatherData').children().fadeOut(300, function() {
+//                $('#weatherData').empty();
+//            });
+//        
+            $.getJSON( jsonUrl, function( data ) {
+
+                loadCityName(data);
+                loadTable(data);
+
+                //assign id to weather condition to be used in assigncondition()
+                var weatherConditionId = data.weather.id;
+                assignCondition(weatherConditionId);
+               
+            })
+    }
+    
+    function loadCityName(data) {
+        //add cty name  
+        $('<h2>'+data.name+'</h2>').appendTo( '#weatherData' );
+    }
+    
+    function loadTable(data) {
+         //add inner data container
             $('<div id="weatherData-inner" class="centered"></div>').appendTo('#weatherData');
             //make table and add header condition
             $('<table id="weatherTable" class="pure-u-1-3 pure-table pure-table-bordered"><tr class="pure-table-odd" id="condition"><td>Condition:</td></tr></table>').appendTo( '#weatherData-inner' );
@@ -159,16 +178,11 @@ $( document ).ready(function() {
             //wind speed
             $('<tr id="wind" class="pure-table-odd"><td>Wind Speed:</td></tr>').appendTo( '#weatherTable' );
             $('<td>'+ data.wind.speed +' mph</td>').appendTo('#wind');
-            
-            //assign id to weather condition to be used in assigncondition()
-			var weatherCondition = data.weather.id;
-            assignCondition(weatherCondition);
-        })
     }
     
     //function to assign a condition based on weather ID code to appropriate condition
-    function assignCondition(weatherCondition) {
-        switch(weatherCondition) {
+    function assignCondition(weatherConditionId) {
+        switch(weatherConditionId) {
             //assign thunderstorm
             case 200: case 201: case 202: case 210: case 211: case 212: case 221: case 230: case 231: case 232:
                 weatherCondition = "thunderstorm";
@@ -207,7 +221,7 @@ $( document ).ready(function() {
                 break;			
         }
         //alert(weatherCondition);
-        addConditionImg(weatherCondition);
+         addConditionImg(weatherCondition);
         assignActivities(weatherCondition);
     }
     

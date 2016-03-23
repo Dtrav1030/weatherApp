@@ -4,7 +4,7 @@ html, body {
 
 #content-wrap {
     min-height: 100%;
-    margin-bottom: 90px;
+    margin-bottom: 50px;
 }
 
 /*
@@ -15,7 +15,7 @@ html, body {
 */
 
 footer {
-    padding: 10px 0;
+    padding: 10px 20px;
     background: #1D1840;
     text-align: center;
     color: white;
@@ -75,6 +75,7 @@ footer {
     line-height: 2em;
     display: inline-table;
     max-width: 410px;
+    margin: 20px 0;
 }
 
 .pure-table td {
@@ -87,29 +88,31 @@ footer {
 }
 
 #conditionImg {
+    width: 33%;
+    max-width: 350px;
     max-height: 350px;
-    width: auto;
-    margin-right: 4%;
+    min-height: 180px;
+    min-width: 180px;
 }
 
 /*Activity Styles*/
     /*slider styling*/
     #sliderWrapper {
         width: 90%;
+        max-width: 425px;
+        margin: 0 auto;
         transform: translate3d(0, 0, 0);
-        float: right;
         transition: transform .5s ease-in-out;
     }
     
     #sliderContainer {
-        height: 350px;
+        height: 360px;
         overflow: hidden;
-        float: right;
     }
 
     .content {
         float: left;
-        height:350px;
+        height: 360px;
         width: 100%; 
         white-space: normal;
         background-repeat: no-repeat;
@@ -123,8 +126,9 @@ footer {
         /*slider navigation*/
         #actNav {
             text-align: center;
-            margin-top: -240px;
-            margin-left: 81%;
+            margin-top: 120px;
+            /* margin-left: 79%; */
+            display: inline-block;
             position: absolute;
         }
             #actNav ul {
@@ -182,3 +186,34 @@ footer {
 * html .clearfix { height: 1%; }
 .clearfix { display: block; }
 /* close commented backslash hack */
+
+/*pure css small*/
+@media screen and (min-width: 35.5em) {
+    
+}
+
+/*pure css med*/
+@media screen and (min-width: 48em) {
+    #actNav {
+        margin-left: -5%;
+    }
+    
+    #conditionImg {
+        margin-top:  8%;
+    }
+}
+
+/*pure css lg*/
+@media screen and (min-width: 64em) {
+    #actNav {
+        margin-left: 0;
+    }
+    
+    .pure-table {
+        margin: 0;
+    }
+    
+    #conditionImg {
+        margin-top: 0;
+    }
+}

@@ -42,7 +42,7 @@
 
     <div class="container centered">    
         <div class="pure-g">
-            <div class="pure-u-1-3">
+            <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-3">
                 <img class="pure-img centered" src="img/zip.png" alt="Find weather by zip">
                 <div class="centered">
                     <span>Zip</span>
@@ -51,7 +51,7 @@
                     <span class="button centered" id="zipSearch">Search Zip</span>
                 </div>
             </div>
-            <div class="pure-u-1-3">
+            <div class="pure-u-1  pure-u-sm-1-2 pure-u-md-1-3">
                 <img class="pure-img centered" src="img/geolocation.png" alt="Find location by geolocation">
                 <div class="centered">
                     <span class="geolocation">Geolocation</span>
@@ -59,7 +59,7 @@
                     <span class="button centered" id="locationSearch">Click for Location</span>
                 </div>
             </div>
-            <div class="pure-u-1-3">
+            <div class="pure-u-1  pure-u-sm-1 pure-u-md-1-3">
                 <img class="pure-img centered" src="img/list.png" alt="Find weather by list">
                 <div class="centered">
                     <span>Listed Cities</span>
@@ -75,7 +75,7 @@
                 </div>
             </div>
         </div>
-    <div id="weatherData" class="centered pure-g"></div>
+        <div id="weatherData" class="centered pure-g"></div>
     </div>
 </div>
 <footer>

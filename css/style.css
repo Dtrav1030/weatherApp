@@ -113,7 +113,7 @@ footer {
     .content {
         float: left;
         height: 360px;
-        width: 100%; 
+        width: 300px; 
         white-space: normal;
         background-repeat: no-repeat;
         background: #F2D3AC;
@@ -127,7 +127,7 @@ footer {
         #actNav {
             text-align: center;
             margin-top: 120px;
-            /* margin-left: 79%; */
+/*             margin-left: 79%; */
             display: inline-block;
             position: absolute;
         }
@@ -215,5 +215,11 @@ footer {
     
     #conditionImg {
         margin-top: 0;
+    }
+}
+
+@media screen and (min-width: 64em) and (max-width: 1250px) {
+    .content {
+        width: 100%;
     }
 }

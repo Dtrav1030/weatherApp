@@ -34,6 +34,17 @@ $( document ).ready(function() {
     //Zip Code Search Function
     $( "#zipSearch" ).click(zipSearch); 
     
+    //if zip input box has focus and user presses enter
+    $('#zipCode').bind('keyup', function(e) {
+
+        if ( e.keyCode === 13 ) { // 13 is enter key
+
+            zipSearch();
+
+        }
+
+    });
+    
     function zipSearch() {
         var zipPatt = new RegExp("^[0-9]{5}(?:-[0-9]{4})?$");
         var zipResult = zipPatt.test($("#zipCode").val());
@@ -95,6 +106,17 @@ $( document ).ready(function() {
     
     //City List click function
     $( "#retrieveList" ).click(listSearch); 
+    
+    $('#citySelect').bind('keyup', function(e) {
+
+        if ( e.keyCode === 13 ) { // 13 is enter key
+
+            listSearch();
+
+        }
+
+    });
+    
     function listSearch() {
     $( "#loading" ).show();
         

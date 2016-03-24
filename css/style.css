@@ -146,8 +146,7 @@ footer {
         #actNav {
             text-align: center;
             margin-top: 120px;
-/*             margin-left: 79%; */
-            display: inline-block;
+            margin-left: 330px;
             position: absolute;
         }
             #actNav ul {
@@ -214,14 +213,19 @@ footer {
 
 /*pure css small*/
 @media screen and (min-width: 35.5em) {
-    
+    #actNav {
+    margin-right: 20%;
+    position: relative;
+    }
 }
 
 /*pure css med*/
 @media screen and (min-width: 48em) {
+/*
     #actNav {
         margin-left: -5%;
     }
+*/
     
     #conditionImg {
         margin-top:  8%;
@@ -249,7 +253,8 @@ footer {
 /*pure css lg*/
 @media screen and (min-width: 64em) {
     #actNav {
-        margin-left: 0;
+        margin-right: 0;
+        position: absolute;
     }
     
     .pure-table {

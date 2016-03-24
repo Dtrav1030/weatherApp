@@ -80,9 +80,19 @@
     </div>
 </div>
 <footer>
-    <p>
         Designed by Andrew Burdett for DIG4503 at the University of Central Florida 
-    </p>
+       <div id="valid">
+           <div>
+            <a href="http://www.w3.org/html/logo/">
+                <img src="https://www.w3.org/html/logo/badge/html5-badge-h-css3-device.png" width="90" height="35" alt="HTML5 Powered with CSS3 / Styling, and Device Access" title="HTML5 Powered with CSS3 / Styling, and Device Access">
+            </a>
+            <a href="http://jigsaw.w3.org/css-validator/check/referer">
+            <img style="border:0;width:88px;height:31px"
+                src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+                alt="Valid CSS!" />
+            </a>
+               </div>
+        </div>    
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>

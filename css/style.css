@@ -71,6 +71,10 @@ footer {
     background: red;
 }
 
+#loading {
+    display: none;
+}
+
 .pure-table {
     line-height: 2em;
     display: inline-table;
@@ -186,6 +190,12 @@ footer {
 * html .clearfix { height: 1%; }
 .clearfix { display: block; }
 /* close commented backslash hack */
+
+@media screen and (max-width: 400px) {
+    .content {
+        width: 100%;
+    }
+}
 
 /*pure css small*/
 @media screen and (min-width: 35.5em) {

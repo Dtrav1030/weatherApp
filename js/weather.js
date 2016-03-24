@@ -38,6 +38,7 @@ $( document ).ready(function() {
         var zipPatt = new RegExp("^[0-9]{5}(?:-[0-9]{4})?$");
         var zipResult = zipPatt.test($("#zipCode").val());
         if (zipResult == true) {
+            $( "#loading" ).show();
             $.ajax({
                 method: 'get',
                 url: 'includes/zipWeather.php',
@@ -60,6 +61,7 @@ $( document ).ready(function() {
     
     //Geolocation search function
     $("#locationSearch").click(function() {
+        $( "#loading" ).show();
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(setGeoData, showGeoError);
         } else {
@@ -93,8 +95,8 @@ $( document ).ready(function() {
     
     //City List click function
     $( "#retrieveList" ).click(listSearch); 
-    
     function listSearch() {
+    $( "#loading" ).show();
         
         switch($("#citySelect").val()) {
             case 'chicago':
@@ -132,13 +134,16 @@ $( document ).ready(function() {
     }
     
     function loadData (jsonUrl) {
-        $('#weatherData').empty().fadeOut;
+        $('#weatherData').fadeOut("slow", "easeOutCubic",  function(){
+            $('#weatherData').empty();
 //            $('#weatherData').children().fadeOut(300, function() {
 //                $('#weatherData').empty();
 //            });
 //        
             $.getJSON( jsonUrl, function( data ) {
-
+                
+                
+                
                 loadCityName(data);
                 loadTable(data);
 
@@ -148,9 +153,18 @@ $( document ).ready(function() {
 //                
                 addConditionImg(weatherCondition);
                 assignActivities(weatherCondition);
+                
+                $( "#loading" ).delay(12000).hide();
                
-            })
+            }, 9000);
+        });
+            
+//        $('#weatherData').fadeIn("slow");
     }
+    
+    $( document ).ajaxComplete(function() {
+      $( "#loading" ).hide();
+    });
     
     function loadCityName(data) {
         //add cty name  
@@ -300,6 +314,8 @@ $( document ).ready(function() {
         }
         addActivities(activity1, activity2, activity3);
         addActivityNav();
+        
+        $('#weatherData').fadeIn("slow");
     } 
     
     //create activity panels

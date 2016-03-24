@@ -74,6 +74,7 @@
                     <span class="button centered" id="retrieveList">Retrieve Data</span>
                 </div>
             </div>
+            <div id="loading" class="centered pure-u-1">Loading...</div>
         </div>
         <div id="weatherData" class="centered pure-g"></div>
     </div>

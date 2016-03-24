@@ -4,7 +4,7 @@
 		//open file
 		$fileContents = file_get_contents($file);
 		//change contents to current data
-		if ($fileContents == "" || time() - (4 * 60 * 60) >= $fileContents){
+//		if ($fileContents == "" || time() - (4 * 60 * 60) >= $fileContents){
 //            print("been 4 hours");
             
             if (file_exists($file)) {
@@ -37,8 +37,12 @@
             //get Chicago Weather as JSON
             $weatherURL = "http://api.openweathermap.org/data/2.5/weather?q=Chicago,us&appid=510a1a6b2a485687afd74a1ab4338b39&units=imperial";
             $weatherData = file_get_contents($weatherURL);
+            
+print($weatherData);
+
             $weatherDataClean1 = explode('[', $weatherData);
             $weatherDataClean2 = explode(']', $weatherDataClean1[1]);
+            $weatherDataClean3 = explode('}', $weatherDataClean1[1]);
             //print($weatherDataClean1[0]);
             //print($weatherDataClean2[0]);
             //print($weatherDataClean2[1]);
@@ -47,11 +51,11 @@
                 //open file
                 $fileContents = file_get_contents($file);
                 //change contents to current data
-                $fileContents = $weatherDataClean1[0].$weatherDataClean2[0].$weatherDataClean2[1];
+                $fileContents = $weatherDataClean1[0].$weatherDataClean3[0]."}".$weatherDataClean2[1];
                 //write file
                 file_put_contents($file, $fileContents);
             }
-
+            
             //get Grand Canyon Weather as JSON
             $weatherURL = "http://api.openweathermap.org/data/2.5/weather?q=GrandCanyon,us&appid=510a1a6b2a485687afd74a1ab4338b39&units=imperial";
             $weatherData = file_get_contents($weatherURL);
@@ -108,6 +112,6 @@
         } else {
 //            print("not 4 hours");
         }
-	}
+//	}
 
 ?>
